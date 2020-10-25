@@ -14,3 +14,10 @@ after-success:
     - docker build -t jy/server ./server
     - docker build -t jy/worker ./worker
 
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+    - docker push jy/client
+    - docker push jy/nginx
+    - docker push jy/server
+    - docker push jy/worker
+
