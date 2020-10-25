@@ -1,0 +1,16 @@
+sudo : required 
+services:
+    - docker
+
+before_install:
+    - docker build -t jy/react -f ./client/Dockerfile.dev ./client
+
+script: 
+    - docker run -e CI=true jy/react npm test
+
+after-success: 
+    - docker build -t jy/client ./client
+    - docker build -t jy/nginx ./nginx
+    - docker build -t jy/server ./server
+    - docker build -t jy/worker ./worker
+
