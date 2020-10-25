@@ -20,4 +20,5 @@ after-success:
     - docker push jy/nginx
     - docker push jy/server
     - docker push jy/worker
+    
 
